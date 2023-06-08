@@ -1,39 +1,26 @@
 #include "main.h"
 
-int _find_sqrt(int n, int start, int end);
+int _find_sqrt(int n, int guess);
 
 /**
  * _find_sqrt - Finds the natural square root of an integer.
  *
  * @n: input integer.
- * @start: integer start search.
- * @end: integer end search.
+ * @guess: input integer.
  *
  * Return: sqrt (success)
  *         OR -1 (fail)
  */
-int _find_sqrt(int n, int start, int end)
+int _find_sqrt(int n, int guess)
 {
-	if (start <= end)
-	{
-		int mid = (start + end) / 2;
-		int square_mid = mid * mid;
+	int square = guess * guess;
 
-		if (square_mid == n)
-		{
-			return (mid);
-		}
-		else if (square_mid < n)
-		{
-			return (_find_sqrt(n, mid + 1, end));
-		}
-		else
-		{
-			return (_find_sqrt(n, start, mid - 1));
-		}
-	}
-	else
+	if (square == n)
+		return (guess);
+	else if (square > n)
 		return (-1);
+	else
+		return (_find_sqrt(n, guess + 1));
 }
 
 /**
@@ -46,11 +33,13 @@ int _find_sqrt(int n, int start, int end)
  */
 int _sqrt_recursion(int n)
 {
+	int guess = 0;
+
 	if (n < 0)
 		return (-1);
 	else if (n == 0 || n == 1)
 		return (n);
 	else
-		return (_find_sqrt(n, 0, n));
+		return (_find_sqrt(n, guess));
 }
 
