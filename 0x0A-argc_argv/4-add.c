@@ -51,7 +51,8 @@ int main(int argc, char **argv)
 		if (number == 1)
 			return (1);
 
-		sum += number;
+		if (number > 0)
+			sum += number;
 	}
 
 	printf("%d\n", sum);
