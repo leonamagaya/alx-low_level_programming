@@ -34,6 +34,14 @@ int _atoi(char *str)
 	return (result * sign);
 }
 
+/**
+ * main - a program that adds positive numbers.
+ *
+ * @argc: count of the arguments supplied to the program.
+ * @argv: array of pointers to the arguments.
+ *
+ * Return: 0
+ */
 int main(int argc, char **argv)
 {
 	int i, number, sum = 0;
