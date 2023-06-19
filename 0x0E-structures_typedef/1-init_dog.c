@@ -14,7 +14,7 @@
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
 	if (d == NULL)
-		exit(EXIT_FAILURE);
+		return (0);
 
 	d->name = name;
 	d->age = age;
