@@ -11,11 +11,54 @@
  *         of the new dog.
  *         Else NULL.
  */
+
+int _strlen(char *str);
+char *strcopy(char *dest, char *src);
+
+/**
+ * _strlen - a function that gets length
+ *           of a string.
+ *
+ * @s: the input string.
+ *
+ * Return: length.
+ */
+int _strlen(char *s)
+{
+	int length = 0;
+
+	while (s[length] != '\0')
+		length++;
+
+	return (length);
+}
+
+/**
+ * _strcopy - copies a string.
+ *
+ * @dest: duplicate string.
+ * @src: source to be copied.
+ *
+ * Return: a pointer to dest.
+ */
+char *_strcopy(char *dest, char *src)
+{
+	int i = 0;
+
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+
+	return (dest);
+}
+
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *new_dog;
-	int len_name = 0, len_owner = 0, i;
-	char *duplicate_name, *duplicate_owner;
 
 	if (name == NULL || owner == NULL)
 		return (NULL);
@@ -24,32 +67,20 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (new_dog == NULL)
 		return (NULL);
 
-	while (name[len_name] != '\0')
-		len_name++;
+	new_dog->name = (char *)malloc(sizeof(char) * (_strlen(name) + 1));
+	new_dog->owner = (char *)malloc(sizeof(char) * (_strlen(owner) + 1));
 
-	duplicate_name = (char *)malloc(sizeof(char) * (len_name + 1));
-
-	while (name[len_owner] != '\0')
-		len_owner++;
-
-	duplicate_owner = (char *)malloc(sizeof(char) * (len_owner + 1));
-
-	if (duplicate_name == NULL || duplicate_owner == NULL)
+	if (new_dog->name == NULL ||new_dog->owner == NULL)
 	{
+		free(new_dog->name);
+		free(new_dog->owner);
+		free(new_dog);
 		return (NULL);
 	}
 
-	for (i = 0; i < len_name; i++)
-		duplicate_name[i] = name[i];
-	duplicate_name[len_name + 1] = '\0';
-
-	for (i = 0; i <= len_owner; i++)
-		duplicate_owner[i] = owner[i];
-	duplicate_owner[len_owner + 1] = '\0';
-
-	new_dog->name = duplicate_name;
+	new_dog->name = _strcopy(new_dog->name, name);
 	new_dog->age = age;
-	new_dog->owner = duplicate_owner;
+	new_dog->owner = _strcopy(new_dog->owner, owner);
 
 	return (new_dog);
 }
