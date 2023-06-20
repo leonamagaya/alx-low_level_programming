@@ -1,19 +1,8 @@
 #include "dog.h"
 #include <stdlib.h>
-/**
- * new_dog - a function that creates a new dog.
- *
- * @name: name of the dog.
- * @age: age of the dog.
- * @owner: owner of the dog.
- *
- * Return: If success - pointer to struct
- *         of the new dog.
- *         Else NULL.
- */
 
-int _strlen(char *str);
-char *strcopy(char *dest, char *src);
+int _strlen(char *s);
+char *_strcopy(char *dest, char *src);
 
 /**
  * _strlen - a function that gets length
@@ -55,7 +44,15 @@ char *_strcopy(char *dest, char *src)
 	return (dest);
 }
 
-
+/**
+ * new_dog - a function that creates a new dog.
+ *
+ * @name: name of the dog.
+ * @age: age of the dog.
+ * @owner: owner of the dog.
+ *
+ * Return: the new dog.
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *new_dog;
@@ -70,7 +67,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	new_dog->name = (char *)malloc(sizeof(char) * (_strlen(name) + 1));
 	new_dog->owner = (char *)malloc(sizeof(char) * (_strlen(owner) + 1));
 
-	if (new_dog->name == NULL ||new_dog->owner == NULL)
+	if (new_dog->name == NULL || new_dog->owner == NULL)
 	{
 		free(new_dog->name);
 		free(new_dog->owner);
