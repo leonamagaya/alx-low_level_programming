@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	if (function == NULL)
 	{
 		printf("Error\n");
-		return (100);
+		return (99);
 	}
 
 	printf("%d\n", function(a, b));
