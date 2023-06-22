@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 
 	if (argc != 4)
 	{
-		prinf("Error\n");
+		printf("Error\n");
 		return (98);
 	}
 	
