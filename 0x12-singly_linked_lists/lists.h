@@ -17,7 +17,7 @@ typedef struct singly_list
 	char *str;
 	unsigned int len;
 	struct singly_list *next;
-}list_t;
+} list_t;
 
 size_t print_list(const list_t *h);
 
