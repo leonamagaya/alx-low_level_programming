@@ -6,7 +6,7 @@
 
 /**
  * struct listint_ls - singly linked list.
- * @data: integer in each node.
+ * @n: integer in each node.
  * @next: pointer to the next node.
  *
  * Description: singly linked list struct.
