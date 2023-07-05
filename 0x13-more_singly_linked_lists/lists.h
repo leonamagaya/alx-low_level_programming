@@ -14,7 +14,7 @@
 typedef struct listint_ls
 {
 	int data;
-	struct listint_t *next;
+	struct listint_ls *next;
 } listint_t;
 
 int _putchar(char c);
