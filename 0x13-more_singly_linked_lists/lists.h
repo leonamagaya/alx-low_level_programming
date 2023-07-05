@@ -5,13 +5,13 @@
 #include <stdlib.h>
 
 /**
- * struct listint_t - singly linked list.
+ * struct listint_ls - singly linked list.
  * @data: integer in each node.
  * @next: pointer to the next node.
  *
  * Description: singly linked list struct.
  */
-typedef struct listint_t
+typedef struct listint_ls
 {
 	int data;
 	struct listint_t *next;
