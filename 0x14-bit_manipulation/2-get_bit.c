@@ -4,19 +4,18 @@
  *            at a given index.
  * @n: input integer.
  * @index: is the index of the bit you want to get.
- * Returns: the value of the bit at index index
+ * Return: the value of the bit at index index
  *          OR -1 if an error occured.
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned long int max = 0x01;
+    if (index >= sizeof(unsigned long int) * 8)
+        return -1;
 
-	max <<= index;
-	if (max == 0)
-		return (-1);
+    unsigned long int mask = 1 << index;
 
-	if ((n & max))
-		return (1);
-	else
-		return (0);
+    if ((n & mask) != 0)
+        return 1;
+    else
+        return 0;
 }
