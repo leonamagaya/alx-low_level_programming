@@ -5,7 +5,7 @@
  * @c: The character written to stdout
  *
  * Return: 1 (Success)
- *        -1 on error and errno is set appropriately
+ * 	   -1 on error and errno is set appropriately
  */
 int _putchar(char c)
 {
