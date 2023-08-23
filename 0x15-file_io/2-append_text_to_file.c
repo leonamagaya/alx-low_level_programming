@@ -1,52 +1,39 @@
 #include "main.h"
 
 /**
- * _strlen - a function that returns the length of a string.
- * @s: input string.
+ * append_text_to_file - appends text at the end of a file
+ * @filename: filename.
+ * @text_content: added content.
  *
- * Return: length.
- */
-int _strlen(char *s)
-{
-	int length = 0;
-
-	while (s[length] != '\0')
-		length++;
-
-	return (length);
-}
-
-/**
- * append_text_to_file - a function that appends text at the eof.
- * @filename: name of the file.
- * @text_content: string to add at the end of the file.
- * Return: 1 on success and -1 on failure.
+ * Return: 1 if the file exists. -1 if the fails does not exist
+ * or if it fails.
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int fd_o, fd_w, lentxt;
+	int fd;
+	int nletters;
+	int rwr;
 
-	if (filename == NULL)
+	if (!filename)
 		return (-1);
 
-	fd_o = open(filename, O_WRONLY | O_APPEND);
-	if (fd_o < 0)
+	fd = open(filename, O_WRONLY | O_APPEND);
+
+	if (fd == -1)
 		return (-1);
 
-	if (text_content == NULL)
+	if (text_content)
 	{
-		close(fd_o);
-		return (1);
+		for (nletters = 0; text_content[nletters]; nletters++)
+			;
+
+		rwr = write(fd, text_content, nletters);
+
+		if (rwr == -1)
+			return (-1);
 	}
 
-	lentxt = _strlen(text_content);
+	close(fd);
 
-	fd_w = write(fd_o, text_content, lentxt);
-
-	if (fd_w < 0)
-		return (-1);
-
-	close(fd_o);
 	return (1);
 }
-
